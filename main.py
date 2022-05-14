@@ -7,7 +7,7 @@ mytext = mytext.replace('→', '\rightarrow')
 mytext = mytext.replace('≤', '\leq')
 mytext = mytext.replace('≥', '\geq')
 mytext = mytext.replace('ϰ', '\kappa')
-
+mytext = mytext.replace('≠', '\ne')
 
 mytext = mytext.replace('⊇', '\supseteq')
 mytext = mytext.replace('…', '\ldots')
@@ -22,8 +22,14 @@ mytext = mytext.replace('\n', '')
 
 
 
-
-
+for i in range(1,3):
+    for j in range(1,3):
+        mytext = mytext.replace(f'i{i},j{j}', '_{' + f'i_{i},j_{j}' + '}')
+        mytext = mytext.replace(f'i{i},i{j}', '_{' + f'i_{i},i_{j}' + '}')
+        mytext = mytext.replace(f'j{i},j{j}', '_{' + f'j_{i},j_{j}' + '}')
+        mytext = mytext.replace(f'j{i},i{j}', '_{' + f'j_{i},i_{j}' + '}')
+        
+        
 for i in range(22, 0, -1):
     for j in range(22, 0, -1):
         for Letter in ['F', 'E', 'D', '\kappa']:
@@ -39,7 +45,7 @@ for Main in ['F', 'E']:
             mytext = mytext.replace(f'{Main}{ind},{sind}', f'{Main}_' + '{' + f'{ind},{sind}' + '}'  )
             mytext = mytext.replace(f'{Main}{ind}{sind}', f'{Main}_' + '{' + f'{ind}{sind}' + '}'  )
 
-for Main in ['F', 'E', 'D', '\kappa']:
+for Main in ['i', 'j', 'F', 'E', 'D', 'K', '\kappa']:
     for ind in ['i', 'j', 'k', 'n', '1', 'm', '2', '3', '4']:
         mytext = mytext.replace(f'{Main}{ind}', f'{Main}_' + '{' + f'{ind}' + '}'  )
 print(mytext)
